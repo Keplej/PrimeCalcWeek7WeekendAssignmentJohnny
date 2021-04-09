@@ -1,11 +1,16 @@
 console.log('Testing');
 
+const budget = 0;
+let calcTester = [];
 
 $(document).ready(onReady);
 
 
 function onReady() {
     console.log('Clicker test');
+    let el = $('#monthlyBudgetLeft');
+    el.empty();
+    el.append(budget);
     $('#button-submit').on('click', addingFields);
 }
 

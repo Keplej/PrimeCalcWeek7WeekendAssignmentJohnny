@@ -14,3 +14,16 @@ body, h1 {
     margin: 10px;
     padding: 10px;
 }
+
+section {
+    margin-bottom: 2rem;
+}
+
+main {
+    width: 80%;
+    margin: 0;
+}
+
+th {
+    padding: 2em;
+}
