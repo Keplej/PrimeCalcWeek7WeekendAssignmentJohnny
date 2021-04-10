@@ -1,6 +1,6 @@
 console.log('Testing');
 
-const budget = 0;
+let budget = 0;
 let monthlyBudget = [];
 
 $(document).ready(onReady);
@@ -8,6 +8,7 @@ $(document).ready(onReady);
 
 function onReady() {
     $('#button-submit').on('click', addingFields);
+    $('#employeeOutput').on('click', '.delete', deleteEmployee);
 }
 
 function addingFields() {
@@ -20,8 +21,8 @@ function addingFields() {
         annualSalary: $('#in-annual-salary').val()
     };
     monthlyBudget.push(newInformation);
-    clearInformation();
     displayEmployees();//showing the employees
+    clearInformation();
     calculateMonthlyBudget();//calculating the monthly budget
 }
 
@@ -43,7 +44,7 @@ function calculateMonthlyBudget() {
     test.append(Math.round(budget));
     
     if (budget >= 20000) {//add background color for peramerters 
-
+        test.css("background-color", "red");
     }
 }
 
@@ -51,15 +52,20 @@ function displayEmployees() {//appending our list
     console.log('Display');
     $('#employeeOutput').empty();
     for (let add of monthlyBudget) {
-        $('#emoloyeeOutput').append(`
+        $('#employeeOutput').append(`
         <tr class="employeeInformation">
             <td>${add.firstName}</td>
             <td>${add.lastName}</td>
             <td>${add.id}</td>
             <td>${add.title}</td>
             <td>${add.annualSalary}</td>
-            <td><button class="delete">Delete<button></td>
+            <td><button class="delete">Delete</button></td>
         </tr>
         `)//button goes last
     }
+}
+
+function deleteEmployee() {
+    console.log('Testing delete');
+    $(this).parents(".employeeInformation").remove();
 }
