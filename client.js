@@ -1,16 +1,12 @@
 console.log('Testing');
 
 const budget = 0;
-let calcTester = [];
+let monthlyBudget = [];
 
 $(document).ready(onReady);
 
 
 function onReady() {
-    console.log('Clicker test');
-    let el = $('#monthlyBudgetLeft');
-    el.empty();
-    el.append(budget);
     $('#button-submit').on('click', addingFields);
 }
 
@@ -23,8 +19,7 @@ function addingFields() {
         title: $('#in-title').val(),
         annualSalary: $('#in-annual-salary').val()
     };
-    calcTester.push(newInformation);
-
+    monthlyBudget.push(newInformation);
     clearInformation();
 }
 
@@ -34,4 +29,18 @@ function clearInformation() {
     $('#in-id').val('');
     $('#in-title').val('');
     $('#in-annual-salary').val('');
+}
+
+function calculateMonthlyBudget() {
+    console.log('calculate');
+    for (let i = 0; i < monthlyBudget.length; i++) {
+        budget += (monthlyBudget[i].annualSalary/12);
+    }
+    let test = $('#monthlyBudgetLeft');
+    test.empty();
+    test.append(Math.round(budget));
+    
+    if (budget >= 20000) {//add background color for peramerters 
+
+    }
 }
