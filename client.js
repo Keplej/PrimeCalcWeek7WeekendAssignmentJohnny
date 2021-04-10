@@ -21,6 +21,8 @@ function addingFields() {
     };
     monthlyBudget.push(newInformation);
     clearInformation();
+    displayEmployees();//showing the employees
+    calculateMonthlyBudget();//calculating the monthly budget
 }
 
 function clearInformation() {
@@ -42,5 +44,22 @@ function calculateMonthlyBudget() {
     
     if (budget >= 20000) {//add background color for peramerters 
 
+    }
+}
+
+function displayEmployees() {//appending our list
+    console.log('Display');
+    $('#employeeOutput').empty();
+    for (let add of monthlyBudget) {
+        $('#emoloyeeOutput').append(`
+        <tr class="employeeInformation">
+            <td>${add.firstName}</td>
+            <td>${add.lastName}</td>
+            <td>${add.id}</td>
+            <td>${add.title}</td>
+            <td>${add.annualSalary}</td>
+            <td><button class="delete">Delete<button></td>
+        </tr>
+        `)//button goes last
     }
 }
